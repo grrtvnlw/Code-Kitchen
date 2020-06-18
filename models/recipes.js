@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const recipes = sequelize.define('Recipes', {
+  const Recipes = sequelize.define('Recipes', {
     name: DataTypes.TEXT,
     review: DataTypes.TEXT,
     description: DataTypes.TEXT,
@@ -13,5 +13,5 @@ module.exports = (sequelize, DataTypes) => {
   Recipes.associate = function(models) {
     Recipes.belongsToMany(models.Categories, { through: 'RecipesCategories'});
   };
-  return recipes;
+  return Recipes;
 };
