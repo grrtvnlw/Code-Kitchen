@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const recipes = sequelize.define('recipes', {
+  const recipes = sequelize.define('Recipes', {
     name: DataTypes.TEXT,
     review: DataTypes.TEXT,
     description: DataTypes.TEXT,
@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     vegan: DataTypes.BOOLEAN,
     glutenfree: DataTypes.BOOLEAN
   }, {});
-  recipes.associate = function(models) {
-    recipes.belongsToMany(models.Categories, { through: 'RecipesCategories'});
+  Recipes.associate = function(models) {
+    Recipes.belongsToMany(models.Categories, { through: 'RecipesCategories'});
   };
   return recipes;
 };
