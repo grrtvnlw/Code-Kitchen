@@ -61,22 +61,32 @@ module.exports = {
       {
         recipesId: 1,
         categoriesId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         recipesId: 1,
         categoriesId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         recipesId: 1,
         categoriesId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         recipesId: 2,
         categoriesId: 3,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },
       {
         recipesId: 2,
         categoriesId: 5,
+        createdAt: new Date(),
+        updatedAt: new Date()
       },  
     ])
   },

@@ -3,7 +3,9 @@ var router = express.Router();
 const db = require('../models');
 
 router.get('/recipes', function(req, res, next) {
-  db.Recipes.findAll()
+  db.Recipes.findAll({
+    include: [db.Categories]
+  })
     .then(data => {
       res.json(data);
     })
