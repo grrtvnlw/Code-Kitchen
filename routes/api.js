@@ -63,4 +63,19 @@ router.post('/recipes', (req, res) => {
     })
 })
 
+router.delete('/recipes/:id', (req, res) => {
+  db.Recipes.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(number => {
+      if (number > 0) {
+        res.status(204).json({});
+      } else {
+        res.json({error: `could not find recipe with id: ${req.params.id}`})
+      }
+    })
+})
+
 module.exports = router;
