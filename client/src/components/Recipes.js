@@ -57,10 +57,7 @@ export default class Recipes extends Component {
     fetch(`/api/v1/recipes/${id}`, {
       method: 'DELETE'
     })
-      // .then(res => res.json())
-      // .then(data => {
         .then(res => {
-          console.log(res)
           if (res.status === 204) {
             let newRecipes = [...this.state.recipes];
             newRecipes = newRecipes.filter(recipe => recipe.id !== id);
