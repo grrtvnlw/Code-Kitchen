@@ -24,7 +24,6 @@ export default class Recipes extends Component {
   }
   
   incrementMe = (id) => {
-    console.log('like')
     fetch(`/api/v1/recipes/${id}/like`, {
       method: 'PATCH'
     })
@@ -40,7 +39,6 @@ export default class Recipes extends Component {
   }
 
   decrementMe = (id) => {
-    console.log('dislike')
     fetch(`/api/v1/recipes/${id}/dislike`, {
       method: 'PATCH'
     })
@@ -55,19 +53,37 @@ export default class Recipes extends Component {
       })
   }
 
+  deleteMe = (id) => {
+    fetch(`/api/v1/recipes/${id}`, {
+      method: 'DELETE'
+    })
+      // .then(res => res.json())
+      // .then(data => {
+        .then(res => {
+          console.log(res)
+          if (res.status === 204) {
+            let newRecipes = [...this.state.recipes];
+            newRecipes = newRecipes.filter(recipe => recipe.id !== id);
+            this.setState({
+              recipes: newRecipes,
+            })
+          }
+      })
+  }
+
   render() {
     return (
       <Container>
         { this.state.recipes.map( recipe => {
           return (
             <Card className="Card" key={ recipe.id }>
-              <Card.Title className="Title">{ recipe.name }</Card.Title>
+              <Card.Title className="Title">{ recipe.name }<span><Button onClick={ () => this.deleteMe(recipe.id) } className="p-1 ml-3">x</Button></span></Card.Title>
               <Card.Body>
                 <Card.Text>{ recipe.description }</Card.Text>
                 <Card.Text>Review: { recipe.review }</Card.Text>
                 <Card.Text>Likes: { recipe.likes }</Card.Text>
-                <Button onClick={ () => this.incrementMe(recipe.id) }>Like</Button>
-                <Button onClick={ () => this.decrementMe(recipe.id) }>Dislike</Button><br />
+                <Button onClick={ () => this.incrementMe(recipe.id) } className="p-1 m-1">Like</Button>
+                <Button onClick={ () => this.decrementMe(recipe.id) } className="p-1 m-1">Dislike</Button><br />
                 <Link to={`/recipes/${recipe.id}`} target="_blank" className="issueTitle">{recipe.name}</Link>
               </Card.Body>
             </Card>
