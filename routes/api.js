@@ -63,6 +63,38 @@ router.post('/recipes', (req, res) => {
     })
 })
 
+router.patch('/recipes/:id/like', (req, res) => {
+  db.Recipes.findByPk(req.params.id, {
+    include: [{
+      model: db.Categories,
+      through: {
+        attributes: []
+      }
+    }]
+  })
+    .then(recipe => {
+      recipe.likes++
+      recipe.save();
+      res.json(recipe);
+    })
+})
+
+router.patch('/recipes/:id/dislike', (req, res) => {
+  db.Recipes.findByPk(req.params.id, {
+    include: [{
+      model: db.Categories,
+      through: {
+        attributes: []
+      }
+    }]
+  })
+    .then(recipe => {
+      recipe.likes--
+      recipe.save();
+      res.json(recipe);
+    })
+})
+
 router.delete('/recipes/:id', (req, res) => {
   db.Recipes.destroy({
     where: {

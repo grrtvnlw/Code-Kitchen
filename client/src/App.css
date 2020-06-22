@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Card {
+  width: 20%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.Title {
+  background-color: #ccc;
+  padding: 5px;
+}
