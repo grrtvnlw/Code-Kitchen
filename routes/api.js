@@ -42,7 +42,7 @@ router.post('/recipes', (req, res) => {
     review: review,
     description: description || '',
     url: url,
-    likes: likes || 0,
+    likes: 0,
     vegetarian: vegetarian || false,
     vegan: vegan || false,
     glutenfree: glutenfree || false,
