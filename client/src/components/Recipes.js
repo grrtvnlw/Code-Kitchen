@@ -57,14 +57,14 @@ export default class Recipes extends Component {
     fetch(`/api/v1/recipes/${id}`, {
       method: 'DELETE'
     })
-        .then(res => {
-          if (res.status === 204) {
-            let newRecipes = [...this.state.recipes];
-            newRecipes = newRecipes.filter(recipe => recipe.id !== id);
-            this.setState({
-              recipes: newRecipes,
-            })
-          }
+      .then(res => {
+        if (res.status === 204) {
+          let newRecipes = [...this.state.recipes];
+          newRecipes = newRecipes.filter(recipe => recipe.id !== id);
+          this.setState({
+            recipes: newRecipes,
+          })
+        }
       })
   }
 
@@ -86,6 +86,7 @@ export default class Recipes extends Component {
             </Card>
           )
         })}
+        <Link to="/recipes/new">Submit a review</Link>
       </Container>
     )
   }

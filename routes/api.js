@@ -64,14 +64,7 @@ router.post('/recipes', (req, res) => {
 })
 
 router.patch('/recipes/:id/like', (req, res) => {
-  db.Recipes.findByPk(req.params.id, {
-    include: [{
-      model: db.Categories,
-      through: {
-        attributes: []
-      }
-    }]
-  })
+  db.Recipes.findByPk(req.params.id)
     .then(recipe => {
       recipe.likes++
       recipe.save();
@@ -80,14 +73,7 @@ router.patch('/recipes/:id/like', (req, res) => {
 })
 
 router.patch('/recipes/:id/dislike', (req, res) => {
-  db.Recipes.findByPk(req.params.id, {
-    include: [{
-      model: db.Categories,
-      through: {
-        attributes: []
-      }
-    }]
-  })
+  db.Recipes.findByPk(req.params.id)
     .then(recipe => {
       recipe.likes--
       recipe.save();
